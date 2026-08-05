@@ -346,8 +346,31 @@ h1,h2,h3{font-family:'Lora',serif; font-weight:600; color:var(--navy); line-heig
 }
 .offer-list li .item-name{ display:flex; gap:9px; align-items:baseline; }
 .offer-list li .check{ color:var(--gold-soft); flex:0 0 auto; font-weight:700; }
+.offer-list li .item-price{
+  font-family:'Poppins',sans-serif; font-size:13px; color:#a99a72;
+  text-decoration:line-through; white-space:nowrap; flex:0 0 auto;
+}
 
-.offer-card .btn{ width:100%; justify-content:center; font-size:16px; padding:18px; margin-top:26px; }
+.offer-total{
+  display:flex; align-items:center; justify-content:space-between;
+  margin-top:8px; padding-top:16px; border-top:1px solid rgba(201,164,92,0.3);
+}
+.offer-total-label{ font-family:'Poppins',sans-serif; font-size:13px; color:#c9bb96; }
+.offer-total-old{
+  font-family:'Poppins',sans-serif; font-size:18px; font-weight:600;
+  color:#d8cba4; text-decoration:line-through;
+}
+
+.offer-price-final{ text-align:center; margin-top:20px; }
+.offer-price-tag{
+  display:inline-block; font-family:'Poppins',sans-serif; font-size:11px; font-weight:700;
+  letter-spacing:0.8px; text-transform:uppercase; color:#ffb4a8;
+  background:rgba(192,57,43,0.18); padding:6px 14px; border-radius:20px; margin-bottom:12px;
+}
+.offer-price-amount{ display:block; font-family:'Lora',serif; font-weight:700; font-size:32px; color:#fff; }
+.offer-price-cash{ display:block; font-family:'Poppins',sans-serif; font-size:12.5px; color:#c9bb96; margin-top:5px; }
+
+.offer-card .btn{ width:100%; justify-content:center; font-size:16px; padding:18px; margin-top:22px; }
 
 /* secondary downsell, discreet but clearly clickable */
 .offer-secondary{
@@ -757,14 +780,25 @@ src="https://www.facebook.com/tr?id=1538792521116054&ev=PageView&noscript=1"
       <div class="offer-tagline">Tudo que você precisa pra estudar esse debate a fundo</div>
 
       <ul class="offer-list">
-        <li><span class="item-name"><span class="check">✓</span><span>Método de Estudo completo (os 8 módulos)</span></span></li>
-        <li><span class="item-name"><span class="check">✓</span><span>Vídeo-resumo narrado das três posições</span></span></li>
-        <li><span class="item-name"><span class="check">✓</span><span>Audiobook pra ouvir em qualquer lugar</span></span></li>
-        <li><span class="item-name"><span class="check">✓</span><span>Infográficos das 3 posições</span></span></li>
-        <li><span class="item-name"><span class="check">✓</span><span>Apresentação visual, resumo em slides</span></span></li>
+        <li><span class="item-name"><span class="check">✓</span><span>Método de Estudo completo (os 8 módulos)</span></span><span class="item-price">R$ 47,00</span></li>
+        <li><span class="item-name"><span class="check">✓</span><span>Vídeo-resumo narrado das três posições</span></span><span class="item-price">R$ 27,00</span></li>
+        <li><span class="item-name"><span class="check">✓</span><span>Audiobook pra ouvir em qualquer lugar</span></span><span class="item-price">R$ 19,00</span></li>
+        <li><span class="item-name"><span class="check">✓</span><span>Infográficos das 3 posições</span></span><span class="item-price">R$ 15,00</span></li>
+        <li><span class="item-name"><span class="check">✓</span><span>Apresentação visual, resumo em slides</span></span><span class="item-price">R$ 12,00</span></li>
       </ul>
 
-      <a href="https://pay.kiwify.com.br/IvXJdhc" class="btn">Garantir o Kit Completo por 5x de R$ 5,54 <span class="btn-arrow">→</span></a>
+      <div class="offer-total">
+        <span class="offer-total-label">Valor total se comprado avulso</span>
+        <span class="offer-total-old">R$ 120,00</span>
+      </div>
+
+      <div class="offer-price-final">
+        <span class="offer-price-tag">Preço por tempo limitado</span>
+        <span class="offer-price-amount">5x de R$ 6,13</span>
+        <span class="offer-price-cash">ou R$ 30,65 à vista, no Kit Completo</span>
+      </div>
+
+      <a href="https://pay.kiwify.com.br/IvXJdhc" class="btn">Garantir o Kit Completo agora <span class="btn-arrow">→</span></a>
     </div>
 
     <div class="offer-secondary">
