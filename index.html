@@ -223,47 +223,31 @@ h1,h2,h3{font-family:'Lora',serif; font-weight:600; color:var(--navy); line-heig
 .a-text{ font-size:14px; color:var(--ink); line-height:1.5; }
 
 /* ---------- PREVIEW (real product screenshots) ---------- */
-.preview{ background:var(--cream); }
+.preview{ background:var(--cream); overflow:hidden; }
 .preview h2{ text-align:center; font-size:clamp(24px,3.6vw,34px); margin-bottom:14px; }
 .preview .lede{ text-align:center; color:var(--ink-soft); max-width:520px; margin:0 auto 50px; }
 
-.preview-carousel{ max-width:300px; margin:0 auto; position:relative; }
-.carousel-viewport{
-  position:relative; border-radius:4px; overflow:hidden;
-  border:1px solid var(--rule); box-shadow:0 18px 40px rgba(23,32,51,0.16);
-  aspect-ratio:3/4; background:#fff;
+.marquee{
+  width:100%; overflow:hidden; margin-top:8px;
+  -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
-.carousel-track{ display:flex; height:100%; transition:transform .45s cubic-bezier(.4,0,.2,1); }
-.carousel-slide{ flex:0 0 100%; height:100%; }
-.carousel-slide img{ width:100%; height:100%; object-fit:cover; display:block; }
-.carousel-arrow{
-  position:absolute; top:50%; transform:translateY(-50%);
-  width:38px; height:38px; border-radius:50%; z-index:2;
-  background:rgba(23,32,51,0.85); color:#fff; border:none;
-  display:flex; align-items:center; justify-content:center;
-  cursor:pointer; transition:background .15s ease;
+.marquee-track{
+  display:flex; align-items:center; gap:22px; width:max-content;
+  animation:marquee-scroll 32s linear infinite;
 }
-.carousel-arrow:hover{ background:var(--navy); }
-.carousel-arrow.prev{ left:-8px; }
-.carousel-arrow.next{ right:-8px; }
-.carousel-arrow svg{ width:16px; height:16px; }
-.carousel-dots{ display:flex; justify-content:center; gap:8px; margin-top:18px; }
-.carousel-dot{
-  width:8px; height:8px; border-radius:50%; background:var(--rule);
-  border:none; padding:0; cursor:pointer;
-  transition:background .15s ease, transform .15s ease;
+.marquee:hover .marquee-track{ animation-play-state:paused; }
+.marquee-frame{
+  flex:0 0 auto; height:230px; border-radius:6px; overflow:hidden;
+  border:1px solid var(--rule); box-shadow:0 16px 34px rgba(23,32,51,0.15);
 }
-.carousel-dot.active{ background:var(--gold); transform:scale(1.3); }
-.carousel-cap{
-  margin-top:14px; text-align:center; font-family:'Poppins',sans-serif;
-  font-size:12px; letter-spacing:0.4px; color:var(--ink-soft); text-transform:uppercase;
+.marquee-frame img{ height:100%; width:auto; display:block; }
+@keyframes marquee-scroll{
+  0%{ transform:translateX(0); }
+  100%{ transform:translateX(-50%); }
 }
-.scroll-hint{ display:none; text-align:center; font-family:'Poppins',sans-serif; font-size:11.5px; color:var(--gold); letter-spacing:0.4px; margin:-30px 0 20px; }
-@media(max-width:760px){ .scroll-hint{ display:block; } }
-@media(max-width:400px){
-  .carousel-arrow.prev{ left:4px; }
-  .carousel-arrow.next{ right:4px; }
-}
+@media(max-width:760px){ .marquee-frame{ height:170px; } .marquee-track{ gap:16px; animation-duration:24s; } }
+@media(max-width:480px){ .marquee-frame{ height:130px; } }
 
 /* ---------- MODULES ---------- */
 .modules{ background:var(--cream); }
@@ -473,68 +457,30 @@ src="https://www.facebook.com/tr?id=1538792521116054&ev=PageView&noscript=1"
     <div class="eyebrow" style="text-align:center;">VEJA POR DENTRO</div>
     <h2 style="margin-top:12px;">O material, do jeito que você vai receber.</h2>
     <p class="lede">Sem enrolação de página de vendas. Isso aqui é o conteúdo real, do jeito que ele chega até você.</p>
-    <p class="scroll-hint">deslize pra o lado para ver mais →</p>
+  </div>
 
-    <div class="preview-carousel" id="previewCarousel">
-      <div class="carousel-viewport">
-        <div class="carousel-track" id="carouselTrack">
-          <div class="carousel-slide"><img src="pagina-texto.jpg" alt="Página de texto do material"></div>
-          <div class="carousel-slide"><img src="linha-do-tempo.jpg" alt="Linha do tempo histórica"></div>
-          <div class="carousel-slide"><img src="tabela-comparativa.jpg" alt="Tabela comparativa das três posições"></div>
-          <div class="carousel-slide"><img src="glossario.jpg" alt="Glossário de termos do material"></div>
-        </div>
-        <button class="carousel-arrow prev" id="carouselPrev" aria-label="Página anterior">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
-        </button>
-        <button class="carousel-arrow next" id="carouselNext" aria-label="Próxima página">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-        </button>
-      </div>
-      <div class="carousel-dots" id="carouselDots">
-        <button class="carousel-dot active" data-i="0" aria-label="Ir para página 1"></button>
-        <button class="carousel-dot" data-i="1" aria-label="Ir para página 2"></button>
-        <button class="carousel-dot" data-i="2" aria-label="Ir para página 3"></button>
-        <button class="carousel-dot" data-i="3" aria-label="Ir para página 4"></button>
-      </div>
-      <div class="carousel-cap" id="carouselCap">Conteúdo em texto</div>
+  <div class="marquee">
+    <div class="marquee-track">
+      <div class="marquee-frame"><img src="print-capa-sumario.jpg" alt="Capa e sumário do material"></div>
+      <div class="marquee-frame"><img src="print-parte1.jpg" alt="Abertura da Parte 1, Fundamentos Bíblicos"></div>
+      <div class="marquee-frame"><img src="print-tabela.jpg" alt="Tabela comparativa das três posições"></div>
+      <div class="marquee-frame"><img src="print-parte5.jpg" alt="Abertura da Parte 5, Dom por Dom"></div>
+      <div class="marquee-frame"><img src="pagina-texto.jpg" alt="Página de texto do material"></div>
+      <div class="marquee-frame"><img src="linha-do-tempo.jpg" alt="Linha do tempo histórica"></div>
+      <div class="marquee-frame"><img src="tabela-comparativa.jpg" alt="Tabela comparativa das três posições"></div>
+      <div class="marquee-frame"><img src="glossario.jpg" alt="Glossário de termos do material"></div>
+      <!-- duplicated set for seamless loop -->
+      <div class="marquee-frame" aria-hidden="true"><img src="print-capa-sumario.jpg" alt=""></div>
+      <div class="marquee-frame" aria-hidden="true"><img src="print-parte1.jpg" alt=""></div>
+      <div class="marquee-frame" aria-hidden="true"><img src="print-tabela.jpg" alt=""></div>
+      <div class="marquee-frame" aria-hidden="true"><img src="print-parte5.jpg" alt=""></div>
+      <div class="marquee-frame" aria-hidden="true"><img src="pagina-texto.jpg" alt=""></div>
+      <div class="marquee-frame" aria-hidden="true"><img src="linha-do-tempo.jpg" alt=""></div>
+      <div class="marquee-frame" aria-hidden="true"><img src="tabela-comparativa.jpg" alt=""></div>
+      <div class="marquee-frame" aria-hidden="true"><img src="glossario.jpg" alt=""></div>
     </div>
   </div>
 </section>
-
-<script>
-(function(){
-  var track = document.getElementById('carouselTrack');
-  var dots = document.querySelectorAll('#carouselDots .carousel-dot');
-  var cap = document.getElementById('carouselCap');
-  var prevBtn = document.getElementById('carouselPrev');
-  var nextBtn = document.getElementById('carouselNext');
-  var labels = ['Conteúdo em texto','Linha do tempo','Tabela comparativa','Glossário'];
-  var total = dots.length;
-  var index = 0;
-
-  function goTo(i){
-    index = (i + total) % total;
-    track.style.transform = 'translateX(' + (-index * 100) + '%)';
-    dots.forEach(function(d, di){ d.classList.toggle('active', di === index); });
-    cap.textContent = labels[index];
-  }
-
-  prevBtn.addEventListener('click', function(){ goTo(index - 1); });
-  nextBtn.addEventListener('click', function(){ goTo(index + 1); });
-  dots.forEach(function(d){ d.addEventListener('click', function(){ goTo(parseInt(d.dataset.i, 10)); }); });
-
-  var startX = null;
-  var viewport = document.querySelector('.carousel-viewport');
-  viewport.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; }, {passive:true});
-  viewport.addEventListener('touchend', function(e){
-    if(startX === null) return;
-    var diff = e.changedTouches[0].clientX - startX;
-    if(diff > 40) goTo(index - 1);
-    else if(diff < -40) goTo(index + 1);
-    startX = null;
-  }, {passive:true});
-})();
-</script>
 
 <!-- ============ AGITATION ============ -->
 <section class="agitate section-pad">
