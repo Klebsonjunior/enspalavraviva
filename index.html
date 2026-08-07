@@ -88,10 +88,16 @@ h1,h2,h3{font-family:'Lora',serif; font-weight:600; color:var(--navy); line-heig
   overflow:hidden;
 }
 .hero-inner{
-  display:flex; align-items:center; justify-content:space-between;
-  gap:48px; text-align:left;
+  display:grid;
+  grid-template-columns:1fr auto;
+  grid-template-areas:
+    "text visual"
+    "chips chips";
+  align-items:center;
+  column-gap:48px; row-gap:36px;
+  text-align:left;
 }
-.hero-text{ flex:1 1 460px; min-width:280px; }
+.hero-text{ grid-area:text; min-width:0; }
 .hero-text .eyebrow{ text-align:left; margin-bottom:16px; }
 .hero-icon{ width:52px; height:52px; margin:0 0 24px; color:var(--gold-soft); }
 .hero h1{
@@ -109,9 +115,9 @@ h1,h2,h3{font-family:'Lora',serif; font-weight:600; color:var(--navy); line-heig
   color:#a99a72; margin-top:18px;
 }
 .hero .micro-trust span{ margin:0 8px; }
-.hero-text .format-row{ justify-content:flex-start; margin:36px 0 0; }
+.hero-inner > .format-row{ grid-area:chips; justify-content:flex-start; margin:0; max-width:none; }
 
-.hero-visual{ flex:0 0 auto; width:260px; position:relative; }
+.hero-visual{ grid-area:visual; flex:0 0 auto; width:260px; position:relative; justify-self:end; }
 .hero-mockup{
   position:relative; width:100%;
   animation:hero-float 5.5s ease-in-out infinite;
@@ -158,14 +164,25 @@ h1,h2,h3{font-family:'Lora',serif; font-weight:600; color:var(--navy); line-heig
   50%{ transform:translateX(-50%) scale(0.8); opacity:0.28; }
 }
 @media(max-width:860px){
-  .hero-inner{ flex-direction:column; text-align:center; }
-  .hero-text{ text-align:center; }
-  .hero-text .eyebrow{ text-align:center; }
-  .hero h1, .hero .sub{ margin-left:auto; margin-right:auto; }
-  .hero-text .format-row{ justify-content:center; }
-  .hero-visual{ width:230px; margin-top:24px; }
+  .hero-inner{ column-gap:32px; row-gap:28px; }
+  .hero-visual{ width:210px; }
 }
-@media(max-width:480px){ .hero-visual{ width:190px; } }
+@media(max-width:600px){
+  .hero{ padding:44px 0 52px; }
+  .hero-inner{ column-gap:18px; row-gap:22px; }
+  .hero-visual{ width:132px; }
+  .hero-icon{ width:38px; height:38px; margin-bottom:16px; }
+  .hero h1{ font-size:21px; margin-bottom:12px; line-height:1.28; }
+  .hero .sub{ font-size:13px; margin-bottom:20px; line-height:1.55; }
+  .btn-lg{ padding:14px 22px; font-size:14px; }
+  .hero-inner > .format-row{ justify-content:center; gap:8px; }
+  .format-chip{ width:31%; padding:10px 6px; }
+  .stack-card.sc1{ transform:rotate(5deg) translate(6px,4px); }
+  .stack-card.sc2{ transform:rotate(-6deg) translate(-6px,5px); }
+  .stack-card.sc3{ transform:rotate(8deg) translate(8px,2px); }
+  .hero-bible{ width:66%; left:-28%; top:14%; opacity:0.4; }
+}
+@media(max-width:400px){ .hero-visual{ width:112px; } }
 
 /* format stack visual */
 .format-row{
@@ -313,8 +330,8 @@ h1,h2,h3{font-family:'Lora',serif; font-weight:600; color:var(--navy); line-heig
   0%{ transform:translateX(0); }
   100%{ transform:translateX(-50%); }
 }
-@media(max-width:760px){ .marquee-frame{ height:300px; } .marquee-track{ gap:16px; animation-duration:24s; } }
-@media(max-width:480px){ .marquee-frame{ height:220px; } }
+@media(max-width:760px){ .marquee-frame{ height:340px; } .marquee-track{ gap:14px; animation-duration:30s; } }
+@media(max-width:480px){ .marquee-frame{ height:300px; } .marquee-track{ animation-duration:26s; } }
 
 /* ---------- MODULES ---------- */
 .modules{ background:var(--cream); }
@@ -510,28 +527,6 @@ src="https://www.facebook.com/tr?id=1538792521116054&ev=PageView&noscript=1"
         <h1>O método completo pra você entender, de uma vez por todas, o debate sobre dons espirituais.</h1>
         <p class="sub">Base bíblica, histórica e prática reunidas em um só lugar. Estude Cessacionismo, Providencialismo e Continuísmo com profundidade real, sem escolher um lado por você.</p>
         <a href="#ofertas" class="btn btn-lg">Quero começar meu estudo <span class="btn-arrow">→</span></a>
-        <div class="format-row">
-          <div class="format-chip">
-            <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12c8-3 16-2 24 3 8-5 16-6 24-3v36c-8-3-16-2-24 3-8-5-16-6-24-3z" stroke-linejoin="round"/><path d="M32 15v36"/></svg>
-            <span><b>108 páginas</b>do método completo</span>
-          </div>
-          <div class="format-chip">
-            <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><circle cx="32" cy="32" r="22"/><path d="M27 22l16 10-16 10z" fill="currentColor" stroke="none"/></svg>
-            <span><b>Vídeo-resumo</b>das 3 posições</span>
-          </div>
-          <div class="format-chip">
-            <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 32v0M16 24v16M24 18v28M32 12v40M40 18v28M48 24v16M56 32v0"/></svg>
-            <span><b>Audiobook</b>sobre o tema</span>
-          </div>
-          <div class="format-chip">
-            <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="8" width="20" height="20" rx="2"/><rect x="36" y="8" width="20" height="20" rx="2"/><rect x="8" y="36" width="20" height="20" rx="2"/><rect x="36" y="36" width="20" height="20" rx="2"/></svg>
-            <span><b>Infográficos</b>das 3 posições</span>
-          </div>
-          <div class="format-chip">
-            <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="14" width="52" height="32" rx="2"/><path d="M20 54h24M32 46v8"/></svg>
-            <span><b>Apresentação visual</b>resumo em slides</span>
-          </div>
-        </div>
       </div>
       <div class="hero-visual">
         <div class="hero-mockup">
@@ -548,6 +543,28 @@ src="https://www.facebook.com/tr?id=1538792521116054&ev=PageView&noscript=1"
           <img class="hero-cover" src="capa.jpg" alt="Capa do material: Guia de Estudo Cessacionismo, Providencialismo e Continuísmo">
         </div>
         <div class="hero-shadow"></div>
+      </div>
+      <div class="format-row">
+        <div class="format-chip">
+          <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12c8-3 16-2 24 3 8-5 16-6 24-3v36c-8-3-16-2-24 3-8-5-16-6-24-3z" stroke-linejoin="round"/><path d="M32 15v36"/></svg>
+          <span><b>108 páginas</b>do método completo</span>
+        </div>
+        <div class="format-chip">
+          <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><circle cx="32" cy="32" r="22"/><path d="M27 22l16 10-16 10z" fill="currentColor" stroke="none"/></svg>
+          <span><b>Vídeo-resumo</b>das 3 posições</span>
+        </div>
+        <div class="format-chip">
+          <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 32v0M16 24v16M24 18v28M32 12v40M40 18v28M48 24v16M56 32v0"/></svg>
+          <span><b>Audiobook</b>sobre o tema</span>
+        </div>
+        <div class="format-chip">
+          <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="8" width="20" height="20" rx="2"/><rect x="36" y="8" width="20" height="20" rx="2"/><rect x="8" y="36" width="20" height="20" rx="2"/><rect x="36" y="36" width="20" height="20" rx="2"/></svg>
+          <span><b>Infográficos</b>das 3 posições</span>
+        </div>
+        <div class="format-chip">
+          <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="14" width="52" height="32" rx="2"/><path d="M20 54h24M32 46v8"/></svg>
+          <span><b>Apresentação visual</b>resumo em slides</span>
+        </div>
       </div>
     </div>
   </div>
