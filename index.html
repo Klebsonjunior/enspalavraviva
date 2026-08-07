@@ -320,7 +320,7 @@ h1,h2,h3{font-family:'Lora',serif; font-weight:600; color:var(--navy); line-heig
   display:flex; align-items:center; gap:22px; width:max-content;
   animation:marquee-scroll 56s linear infinite;
 }
-.marquee:hover .marquee-track{ animation-play-state:paused; }
+@media(hover:hover){ .marquee:hover .marquee-track{ animation-play-state:paused; } }
 .marquee-frame{
   flex:0 0 auto; height:420px; border-radius:6px; overflow:hidden;
   border:1px solid var(--rule); box-shadow:0 16px 34px rgba(23,32,51,0.15);
