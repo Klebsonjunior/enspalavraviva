@@ -111,19 +111,34 @@ h1,h2,h3{font-family:'Lora',serif; font-weight:600; color:var(--navy); line-heig
 .hero .micro-trust span{ margin:0 8px; }
 .hero-text .format-row{ justify-content:flex-start; margin:36px 0 0; }
 
-.hero-visual{ flex:0 0 auto; width:220px; position:relative; }
+.hero-visual{ flex:0 0 auto; width:260px; position:relative; }
 .hero-mockup{
   position:relative; width:100%;
   animation:hero-float 5.5s ease-in-out infinite;
 }
-.hero-mockup img{
-  width:100%; display:block; border-radius:5px;
+.hero-bible{
+  position:absolute; width:80%; left:-36%; top:16%;
+  color:var(--gold-soft); opacity:0.5; transform:rotate(-11deg);
+  z-index:0; pointer-events:none;
+}
+.stack-card{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; border-radius:5px;
+  border:1px solid rgba(201,164,92,0.3);
+  box-shadow:0 20px 38px rgba(0,0,0,0.4);
+  z-index:1;
+}
+.stack-card.sc1{ transform:rotate(5deg) translate(11px,7px); }
+.stack-card.sc2{ transform:rotate(-6deg) translate(-10px,9px); }
+.stack-card.sc3{ transform:rotate(9deg) translate(15px,3px); }
+.hero-cover{
+  position:relative; z-index:2; width:100%; display:block; border-radius:5px;
   box-shadow:0 30px 54px rgba(0,0,0,0.5), 0 4px 14px rgba(0,0,0,0.3);
   border:1px solid rgba(201,164,92,0.35);
   transform:rotate(-2.5deg);
 }
 .hero-mockup::after{
-  content:""; position:absolute; inset:0;
+  content:""; position:absolute; inset:0; z-index:2;
   box-shadow:0 0 80px rgba(201,164,92,0.12);
   border-radius:5px; transform:rotate(-2.5deg); pointer-events:none;
 }
@@ -148,9 +163,9 @@ h1,h2,h3{font-family:'Lora',serif; font-weight:600; color:var(--navy); line-heig
   .hero-text .eyebrow{ text-align:center; }
   .hero h1, .hero .sub{ margin-left:auto; margin-right:auto; }
   .hero-text .format-row{ justify-content:center; }
-  .hero-visual{ width:200px; margin-top:12px; }
+  .hero-visual{ width:230px; margin-top:24px; }
 }
-@media(max-width:480px){ .hero-visual{ width:170px; } }
+@media(max-width:480px){ .hero-visual{ width:190px; } }
 
 /* format stack visual */
 .format-row{
@@ -519,7 +534,19 @@ src="https://www.facebook.com/tr?id=1538792521116054&ev=PageView&noscript=1"
         </div>
       </div>
       <div class="hero-visual">
-        <div class="hero-mockup"><img src="capa.jpg" alt="Capa do material: Guia de Estudo Cessacionismo, Providencialismo e Continuísmo"></div>
+        <div class="hero-mockup">
+          <svg class="hero-bible" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M50 20 L50 85"/>
+            <path d="M50 20 C35 12 15 15 8 22 L8 78 C15 71 35 68 50 76" stroke-linejoin="round"/>
+            <path d="M50 20 C65 12 85 15 92 22 L92 78 C85 71 65 68 50 76" stroke-linejoin="round"/>
+            <path d="M14 30 L40 30 M14 38 L40 38 M14 46 L36 46" stroke-width="1"/>
+            <path d="M60 30 L86 30 M60 38 L86 38 M60 46 L82 46" stroke-width="1"/>
+          </svg>
+          <img class="stack-card sc1" src="tabela-comparativa.jpg" alt="" aria-hidden="true">
+          <img class="stack-card sc2" src="linha-do-tempo.jpg" alt="" aria-hidden="true">
+          <img class="stack-card sc3" src="glossario.jpg" alt="" aria-hidden="true">
+          <img class="hero-cover" src="capa.jpg" alt="Capa do material: Guia de Estudo Cessacionismo, Providencialismo e Continuísmo">
+        </div>
         <div class="hero-shadow"></div>
       </div>
     </div>
