@@ -484,52 +484,59 @@ footer p{ font-family:'Poppins',sans-serif; font-size:11.5px; color:#7a7154; let
 .coupon-popup{
   position:fixed; right:18px; bottom:20px; z-index:80;
   font-family:'Poppins',sans-serif; width:270px; max-width:calc(100vw - 36px);
+  animation:coupon-float 3.2s ease-in-out infinite;
+  animation-delay:1.8s;
 }
 @media(max-width:680px){ .coupon-popup{ bottom:86px; } }
+@keyframes coupon-float{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-9px); }
+}
 .coupon-card{
-  position:relative; background:linear-gradient(180deg,#1b2540,var(--navy));
-  border:1px solid rgba(201,164,92,0.45); border-radius:12px;
-  box-shadow:0 20px 44px rgba(0,0,0,0.4); overflow:hidden;
+  position:relative; background:linear-gradient(150deg,#fff8e8,var(--cream) 55%,#fbeecb);
+  border:2.5px solid var(--gold); border-radius:12px;
+  box-shadow:0 20px 44px rgba(0,0,0,0.35), 0 0 0 5px rgba(201,164,92,0.16), 0 0 26px rgba(201,164,92,0.35);
+  overflow:hidden;
   opacity:0; animation:coupon-in .5s ease both; animation-delay:1.2s;
 }
 @keyframes coupon-in{ from{ opacity:0; transform:translateY(16px); } to{ opacity:1; transform:translateY(0); } }
 .coupon-close-btn{
   position:absolute; top:8px; right:8px; width:20px; height:20px; z-index:2;
-  border:none; background:rgba(255,255,255,0.08); color:#e7d9b8; border-radius:50%;
+  border:none; background:rgba(23,32,51,0.1); color:var(--navy); border-radius:50%;
   font-size:12px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center;
 }
-.coupon-close-btn:hover{ background:rgba(255,255,255,0.18); }
+.coupon-close-btn:hover{ background:rgba(23,32,51,0.2); }
 .coupon-closed-view{
   position:relative; padding:16px 34px 16px 16px; cursor:pointer;
   display:flex; gap:10px; align-items:flex-start;
 }
-.coupon-closed-view .ic{ width:26px; height:26px; color:var(--gold-soft); flex:0 0 auto; margin-top:1px; }
+.coupon-closed-view .ic{ width:26px; height:26px; color:var(--gold); flex:0 0 auto; margin-top:1px; }
 .coupon-closed-view .txt strong{
-  display:block; color:var(--gold-soft); font-size:11px; font-weight:700;
+  display:block; color:var(--cta); font-size:11px; font-weight:700;
   letter-spacing:0.4px; text-transform:uppercase; margin-bottom:4px;
 }
-.coupon-closed-view .txt .dates{ display:block; color:#fff; font-size:13.5px; font-weight:600; line-height:1.35; }
+.coupon-closed-view .txt .dates{ display:block; color:var(--navy); font-size:13.5px; font-weight:600; line-height:1.35; }
 .coupon-closed-view .txt .cta{
-  display:block; margin-top:8px; color:var(--gold-soft); font-size:11.5px;
-  font-weight:600; text-decoration:underline;
+  display:block; margin-top:8px; color:var(--cta); font-size:11.5px;
+  font-weight:700; text-decoration:underline;
 }
 .coupon-open-view{ display:none; padding:18px; }
 .coupon-open-view.active{ display:block; }
 .coupon-open-view .label{
-  font-size:11px; color:#c9bb96; text-transform:uppercase; letter-spacing:0.4px; margin-bottom:10px;
+  font-size:11px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.4px; margin-bottom:10px;
 }
 .coupon-code-box{
   display:flex; align-items:center; justify-content:space-between; gap:10px;
-  background:var(--cream); border:1.5px dashed var(--gold); border-radius:7px;
+  background:var(--navy); border:1.5px dashed var(--gold); border-radius:7px;
   padding:11px 14px; cursor:pointer; margin-bottom:12px;
 }
-.coupon-code-box .code{ font-family:'Lora',serif; font-weight:700; font-size:19px; letter-spacing:2px; color:var(--navy); }
+.coupon-code-box .code{ font-family:'Lora',serif; font-weight:700; font-size:19px; letter-spacing:2px; color:#fff; }
 .coupon-code-box .copy-label{
-  font-family:'Poppins',sans-serif; font-size:10.5px; font-weight:700; color:var(--gold);
+  font-family:'Poppins',sans-serif; font-size:10.5px; font-weight:700; color:var(--gold-soft);
   text-transform:uppercase; letter-spacing:0.3px; white-space:nowrap;
 }
-.coupon-open-view .instructions{ font-size:11.5px; color:#c9bb96; line-height:1.55; }
-.coupon-open-view .instructions b{ color:#e7d9b8; }
+.coupon-open-view .instructions{ font-size:11.5px; color:var(--ink-soft); line-height:1.55; }
+.coupon-open-view .instructions b{ color:var(--navy); }
 </style>
 <script>
 !function(f,b,e,v,n,t,s)
