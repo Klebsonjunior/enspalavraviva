@@ -479,6 +479,57 @@ footer p{ font-family:'Poppins',sans-serif; font-size:11.5px; color:#7a7154; let
 .sticky-cta .txt strong{ display:block; color:#fff; font-size:15px; }
 .sticky-cta .btn{ padding:12px 20px; font-size:13.5px; white-space:nowrap; }
 @media(max-width:680px){ .sticky-cta{ display:flex; } body{ padding-bottom:70px; } }
+
+/* ---------- COUPON POPUP ---------- */
+.coupon-popup{
+  position:fixed; right:18px; bottom:20px; z-index:80;
+  font-family:'Poppins',sans-serif; width:270px; max-width:calc(100vw - 36px);
+}
+@media(max-width:680px){ .coupon-popup{ bottom:86px; } }
+.coupon-card{
+  position:relative; background:linear-gradient(180deg,#1b2540,var(--navy));
+  border:1px solid rgba(201,164,92,0.45); border-radius:12px;
+  box-shadow:0 20px 44px rgba(0,0,0,0.4); overflow:hidden;
+  opacity:0; animation:coupon-in .5s ease both; animation-delay:1.2s;
+}
+@keyframes coupon-in{ from{ opacity:0; transform:translateY(16px); } to{ opacity:1; transform:translateY(0); } }
+.coupon-close-btn{
+  position:absolute; top:8px; right:8px; width:20px; height:20px; z-index:2;
+  border:none; background:rgba(255,255,255,0.08); color:#e7d9b8; border-radius:50%;
+  font-size:12px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center;
+}
+.coupon-close-btn:hover{ background:rgba(255,255,255,0.18); }
+.coupon-closed-view{
+  position:relative; padding:16px 34px 16px 16px; cursor:pointer;
+  display:flex; gap:10px; align-items:flex-start;
+}
+.coupon-closed-view .ic{ width:26px; height:26px; color:var(--gold-soft); flex:0 0 auto; margin-top:1px; }
+.coupon-closed-view .txt strong{
+  display:block; color:var(--gold-soft); font-size:11px; font-weight:700;
+  letter-spacing:0.4px; text-transform:uppercase; margin-bottom:4px;
+}
+.coupon-closed-view .txt .dates{ display:block; color:#fff; font-size:13.5px; font-weight:600; line-height:1.35; }
+.coupon-closed-view .txt .cta{
+  display:block; margin-top:8px; color:var(--gold-soft); font-size:11.5px;
+  font-weight:600; text-decoration:underline;
+}
+.coupon-open-view{ display:none; padding:18px; }
+.coupon-open-view.active{ display:block; }
+.coupon-open-view .label{
+  font-size:11px; color:#c9bb96; text-transform:uppercase; letter-spacing:0.4px; margin-bottom:10px;
+}
+.coupon-code-box{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  background:var(--cream); border:1.5px dashed var(--gold); border-radius:7px;
+  padding:11px 14px; cursor:pointer; margin-bottom:12px;
+}
+.coupon-code-box .code{ font-family:'Lora',serif; font-weight:700; font-size:19px; letter-spacing:2px; color:var(--navy); }
+.coupon-code-box .copy-label{
+  font-family:'Poppins',sans-serif; font-size:10.5px; font-weight:700; color:var(--gold);
+  text-transform:uppercase; letter-spacing:0.3px; white-space:nowrap;
+}
+.coupon-open-view .instructions{ font-size:11.5px; color:#c9bb96; line-height:1.55; }
+.coupon-open-view .instructions b{ color:#e7d9b8; }
 </style>
 <script>
 !function(f,b,e,v,n,t,s)
@@ -502,15 +553,15 @@ src="https://www.facebook.com/tr?id=1538792521116054&ev=PageView&noscript=1"
   <div class="marquee-track">
     <div class="mq-group">
       <span>OFERTA DE LANÇAMENTO POR TEMPO LIMITADO</span><span class="sep">•</span>
+      <span>ESTUDE CESSACIONISMO, PROVIDENCIALISMO E CONTINUÍSMO — CUPOM DE DESCONTO LIBERADO 08/08 E 09/08</span><span class="sep">•</span>
       <span>OFERTA DE LANÇAMENTO POR TEMPO LIMITADO</span><span class="sep">•</span>
-      <span>OFERTA DE LANÇAMENTO POR TEMPO LIMITADO</span><span class="sep">•</span>
-      <span>OFERTA DE LANÇAMENTO POR TEMPO LIMITADO</span><span class="sep">•</span>
+      <span>ESTUDE CESSACIONISMO, PROVIDENCIALISMO E CONTINUÍSMO — CUPOM DE DESCONTO LIBERADO 08/08 E 09/08</span><span class="sep">•</span>
     </div>
     <div class="mq-group" aria-hidden="true">
       <span>OFERTA DE LANÇAMENTO POR TEMPO LIMITADO</span><span class="sep">•</span>
+      <span>ESTUDE CESSACIONISMO, PROVIDENCIALISMO E CONTINUÍSMO — CUPOM DE DESCONTO LIBERADO 08/08 E 09/08</span><span class="sep">•</span>
       <span>OFERTA DE LANÇAMENTO POR TEMPO LIMITADO</span><span class="sep">•</span>
-      <span>OFERTA DE LANÇAMENTO POR TEMPO LIMITADO</span><span class="sep">•</span>
-      <span>OFERTA DE LANÇAMENTO POR TEMPO LIMITADO</span><span class="sep">•</span>
+      <span>ESTUDE CESSACIONISMO, PROVIDENCIALISMO E CONTINUÍSMO — CUPOM DE DESCONTO LIBERADO 08/08 E 09/08</span><span class="sep">•</span>
     </div>
   </div>
 </div>
@@ -924,6 +975,66 @@ src="https://www.facebook.com/tr?id=1538792521116054&ev=PageView&noscript=1"
   <div class="txt">Kit Completo</div>
   <a href="#ofertas" class="btn">Garantir agora</a>
 </div>
+
+<!-- ============ COUPON POPUP ============ -->
+<div class="coupon-popup" id="couponPopup">
+  <div class="coupon-card">
+    <button class="coupon-close-btn" id="couponClose" aria-label="Fechar">✕</button>
+
+    <div class="coupon-closed-view" id="couponClosedView">
+      <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M8 26a6 6 0 0 1 0-12h48a6 6 0 0 1 0 12" stroke-linecap="round"/>
+        <path d="M8 26v24a4 4 0 0 0 4 4h40a4 4 0 0 0 4-4V26" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M32 26v28" stroke-dasharray="4 4"/>
+      </svg>
+      <div class="txt">
+        <strong>Cupom liberado</strong>
+        <span class="dates">Cupom de desconto liberado para: 08/08 e 09/08</span>
+        <span class="cta">Clique para pegar o seu cupom →</span>
+      </div>
+    </div>
+
+    <div class="coupon-open-view" id="couponOpenView">
+      <div class="label">Use este cupom no checkout</div>
+      <div class="coupon-code-box" id="couponCodeBox">
+        <span class="code">ESTUDO20</span>
+        <span class="copy-label" id="couponCopyLabel">Copiar</span>
+      </div>
+      <p class="instructions">Copie e cole no checkout, clicando em <b>"Tem cupom de desconto?"</b> logo abaixo dos dados inseridos.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var popup = document.getElementById('couponPopup');
+  var closedView = document.getElementById('couponClosedView');
+  var openView = document.getElementById('couponOpenView');
+  var closeBtn = document.getElementById('couponClose');
+  var codeBox = document.getElementById('couponCodeBox');
+  var copyLabel = document.getElementById('couponCopyLabel');
+
+  closedView.addEventListener('click', function(){
+    closedView.style.display = 'none';
+    openView.classList.add('active');
+  });
+
+  closeBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    popup.style.display = 'none';
+  });
+
+  codeBox.addEventListener('click', function(){
+    var code = 'ESTUDO20';
+    if(navigator.clipboard){
+      navigator.clipboard.writeText(code).then(function(){
+        copyLabel.textContent = 'Copiado!';
+        setTimeout(function(){ copyLabel.textContent = 'Copiar'; }, 1800);
+      });
+    }
+  });
+})();
+</script>
 
 
 </body>
