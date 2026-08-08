@@ -483,7 +483,7 @@ footer p{ font-family:'Poppins',sans-serif; font-size:11.5px; color:#7a7154; let
 /* ---------- COUPON POPUP ---------- */
 .coupon-popup{
   position:fixed; right:18px; bottom:20px; z-index:80;
-  font-family:'Poppins',sans-serif; width:270px; max-width:calc(100vw - 36px);
+  font-family:'Poppins',sans-serif; width:278px; max-width:calc(100vw - 36px);
   animation:coupon-float 3.2s ease-in-out infinite;
   animation-delay:1.8s;
 }
@@ -494,48 +494,50 @@ footer p{ font-family:'Poppins',sans-serif; font-size:11.5px; color:#7a7154; let
 }
 .coupon-card{
   position:relative; background:linear-gradient(150deg,#fff8e8,var(--cream) 55%,#fbeecb);
-  border:2.5px solid var(--gold); border-radius:12px;
+  border:2.6px solid var(--gold); border-radius:12px;
   box-shadow:0 20px 44px rgba(0,0,0,0.35), 0 0 0 5px rgba(201,164,92,0.16), 0 0 26px rgba(201,164,92,0.35);
   overflow:hidden;
   opacity:0; animation:coupon-in .5s ease both; animation-delay:1.2s;
 }
 @keyframes coupon-in{ from{ opacity:0; transform:translateY(16px); } to{ opacity:1; transform:translateY(0); } }
 .coupon-close-btn{
-  position:absolute; top:8px; right:8px; width:20px; height:20px; z-index:2;
+  position:absolute; top:8px; right:8px; width:21px; height:21px; z-index:2;
   border:none; background:rgba(23,32,51,0.1); color:var(--navy); border-radius:50%;
   font-size:12px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center;
 }
 .coupon-close-btn:hover{ background:rgba(23,32,51,0.2); }
 .coupon-closed-view{
-  position:relative; padding:16px 34px 16px 16px; cursor:pointer;
+  position:relative; padding:16px 35px 17px 16px; cursor:pointer;
   display:flex; gap:10px; align-items:flex-start;
 }
-.coupon-closed-view .ic{ width:26px; height:26px; color:var(--gold); flex:0 0 auto; margin-top:1px; }
+.coupon-closed-view .ic{ width:27px; height:27px; color:var(--gold); flex:0 0 auto; margin-top:1px; }
 .coupon-closed-view .txt strong{
-  display:block; color:var(--cta); font-size:11px; font-weight:700;
+  display:block; color:var(--cta); font-size:11.3px; font-weight:700;
   letter-spacing:0.4px; text-transform:uppercase; margin-bottom:4px;
 }
-.coupon-closed-view .txt .dates{ display:block; color:var(--navy); font-size:13.5px; font-weight:600; line-height:1.35; }
-.coupon-closed-view .txt .cta{
-  display:block; margin-top:8px; color:var(--cta); font-size:11.5px;
-  font-weight:700; text-decoration:underline;
+.coupon-closed-view .txt .dates{ display:block; color:var(--navy); font-size:14px; font-weight:600; line-height:1.35; }
+.coupon-closed-view .txt .cta-btn{
+  display:inline-flex; align-items:center; gap:6px; margin-top:10px;
+  background:var(--cta); color:#fff; font-size:11.8px; font-weight:700;
+  padding:8px 13px; border-radius:6px; letter-spacing:0.2px;
+  box-shadow:0 6px 14px rgba(192,57,43,0.35);
 }
 .coupon-open-view{ display:none; padding:18px; }
 .coupon-open-view.active{ display:block; }
 .coupon-open-view .label{
-  font-size:11px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.4px; margin-bottom:10px;
+  font-size:11.3px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.4px; margin-bottom:10px;
 }
 .coupon-code-box{
   display:flex; align-items:center; justify-content:space-between; gap:10px;
   background:var(--navy); border:1.5px dashed var(--gold); border-radius:7px;
   padding:11px 14px; cursor:pointer; margin-bottom:12px;
 }
-.coupon-code-box .code{ font-family:'Lora',serif; font-weight:700; font-size:19px; letter-spacing:2px; color:#fff; }
+.coupon-code-box .code{ font-family:'Lora',serif; font-weight:700; font-size:19.5px; letter-spacing:2px; color:#fff; }
 .coupon-code-box .copy-label{
-  font-family:'Poppins',sans-serif; font-size:10.5px; font-weight:700; color:var(--gold-soft);
+  font-family:'Poppins',sans-serif; font-size:10.8px; font-weight:700; color:var(--gold-soft);
   text-transform:uppercase; letter-spacing:0.3px; white-space:nowrap;
 }
-.coupon-open-view .instructions{ font-size:11.5px; color:var(--ink-soft); line-height:1.55; }
+.coupon-open-view .instructions{ font-size:11.8px; color:var(--ink-soft); line-height:1.55; }
 .coupon-open-view .instructions b{ color:var(--navy); }
 </style>
 <script>
@@ -997,7 +999,7 @@ src="https://www.facebook.com/tr?id=1538792521116054&ev=PageView&noscript=1"
       <div class="txt">
         <strong>Cupom liberado</strong>
         <span class="dates">Cupom de desconto liberado para: 08/08 e 09/08</span>
-        <span class="cta">Clique para pegar o seu cupom →</span>
+        <span class="cta-btn">Pegar meu cupom <span class="btn-arrow">→</span></span>
       </div>
     </div>
 
